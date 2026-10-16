@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n;
+    int time;
+    int sum = 0;
+    cin >> n;
+    vector<int>days;
+    for (int i = 0; i < 7; i++) {
+        cin >> time;
+        days.push_back(time);
+    }
+    for (int j = 0; j < 7; j++) {
+        sum = sum + days[j];
+    }
+    int rem = n % sum;
+    int sum1 = 0;
+    int k = 0;
+    do {
+        sum1 = sum1+ days[k];
+        k++;
+    } while (sum1 < rem);
+    cout << k;
+
+
+    return 0;
+}
