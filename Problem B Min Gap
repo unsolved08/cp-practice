@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    vector<int>v;
+    vector<int>diff;
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        int num;
+        cin >> num;
+        v.push_back(num);
+    }
+    sort(v.begin(), v.end());
+    int d;
+    for (int i = 0; i < n-1; i++) {
+        if (v[i + 1] > v[i]) {
+            d = v[i + 1] - v[i];
+            diff.push_back(d);
+        }
+        else {
+            d = v[i] - v[i+1];
+            diff.push_back(d);
+        }
+    }
+    auto it = min_element(diff.begin(), diff.end());
+
+    cout << *it;
+
+
+    return 0;
+}
