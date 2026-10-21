@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    multiset<long long>ms;
+    for (int i = 0; i < n; i++) {
+        long long element;
+        cin >> element;
+        ms.insert(element);
+    }
+
+    long long sum = 0;
+    
+    int j = 0;
+    while(j < n - 1){
+        auto it1 = ms.begin();
+        advance(it1, j);
+        auto it2 = ms.begin();
+        int k = j + 1;
+        advance(it2, k);
+
+        
+         if (*it1 != *it2) {
+            long long num = ms.count(*it1);
+            
+            if (num > 1) {
+                
+                long long factorial = (num * (num - 1)) / 2;
+                sum = sum + factorial;
+            }
+            j++;
+         }
+         else {
+             j++;
+         }
+        
+        
+    }
+    auto it3 = ms.begin();
+    advance(it3, n - 1);
+    long long numl = ms.count(*it3);
+    if (numl > 1) {
+        
+        long long lfact = (numl * (numl - 1)) / 2;
+        sum = sum + lfact;
+    }
+    
+    cout << sum;
+    return 0;
+}
