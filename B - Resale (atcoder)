@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+signed main() {
+    int t;
+    cin >> t;
+    for (int i = 0; i < t; i++) {
+        int n;
+        cin >> n;
+        vector<int>val;
+        vector<int>c;
+        vector<int>diff;
+        for (int j = 0; j < n; j++) {
+            int value;
+            cin >> value;
+            val.push_back(value);
+
+        }for (int j = 0; j < n; j++) {
+            int cost;
+            cin >> cost;
+            c.push_back(cost);
+        }for (int j = 0; j < n; j++) {
+            diff.push_back(val[j] - c[j]);
+
+        }
+        sort(diff.rbegin(), diff.rend());
+        int k = 0;
+        int sum = 0;
+        if (k < n) {
+            while (diff[k] > 0) {
+                sum = sum + diff[k];
+                k++;
+            }
+        }
+        cout << sum <<"\n";
+    
+    }
+ 
+    return 0;
+}
+
