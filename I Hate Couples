@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+signed main() {
+    int t;
+    cin >> t;
+    for (int m = 0; m < t; m++) {
+        int n, k;
+        cin >> n >> k;
+        set<int>s;
+        set<int>ans;
+        for (int i = 0; i < n; i++) {
+            int element;
+            cin >> element;
+            s.insert(element);
+        }
+        auto it = s.begin();
+        advance(it, n - 1);
+        ans.insert(*it);
+        if (n >= 2) {
+            for (int i = n - 2; i >= 0; i--) {
+                auto it1 = ans.begin();
+                advance(it1, 0);
+                auto it2 = s.begin();
+                advance(it2, i);
+                if ((*it1 - *it2) > k) {
+                    ans.insert(*it2);
+                }
+
+            }
+        }
+
+        int num = ans.size();
+        int sum = 0;
+        for (int i = 0; i < num; i++) {
+            auto it3 = ans.begin();
+            advance(it3, i);
+            sum = sum + *it3;
+
+        }
+        cout << sum << "\n";
+    }
+    
+    return 0;
+}
