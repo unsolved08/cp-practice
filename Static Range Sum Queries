@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+signed main() {
+    int n, q;
+    cin >> n >> q;
+    vector<int>v;
+    vector<int>ps(n+1);
+    for (int i = 0; i < n; i++) {
+        int element;
+        cin >> element;
+        v.push_back(element);
+
+    }
+    ps[0] = 0;
+    for (int k = 0; k < n; k++) {
+        ps[k + 1] = ps[k] + v[k];
+
+    }
+
+    for (int j = 0; j < q; j++) {
+        int l, r;
+        cin >> l >> r;
+        int diff = ps[r] - ps[l - 1];
+        cout << diff << "\n";
+    }
+
+    return 0;
+}
