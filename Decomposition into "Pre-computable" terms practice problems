@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+signed main() {
+    int n,q;
+    cin >> n >> q;
+
+    vector<int>v;
+    vector<int>ps(n+1);
+    vector<int>pp(n + 1);
+
+    
+    for (int i = 0; i < n; i++) {
+        int element;
+        cin >> element;
+        v.push_back(element);
+
+    }
+    
+    ps[0] = 0;
+    for (int i = 0; i < n; i++) {
+        ps[i + 1] = ps[i] + v[i];
+
+    }
+    pp[0]=0;
+    for (int i = 0; i < n; i++) {
+        pp[i + 1] = pp[i] + v[i] * (i + 1);
+    }
+    for (int i = 0; i < q; i++) {
+        int l, r;
+        cin >> l >> r;
+        cout << (pp[r] - pp[l - 1]) - (l - 1) * (ps[r] - ps[l - 1]);
+    }
+
+    return 0;
+}
