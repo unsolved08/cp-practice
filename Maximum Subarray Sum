@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+signed main() {
+    int t;
+    cin >> t;
+    for (int i = 0; i < t; i++) {
+        int n;
+        cin >> n;
+        vector<int>v(n);
+        for (int j = 0; j < n; j++) {
+            cin >> v[j];
+        }
+        int max_index = max_element(v.begin(), v.end()) - v.begin();
+        vector<int>ps1(n - max_index);
+        ps1[0] = 0;
+        vector<int>ps2(max_index + 1);
+        ps2[max_index] = 0;
+        for (int k = max_index + 1; k < n; k++) {
+            ps1[k - max_index] = ps1[k - (max_index + 1)] + v[k];
+
+        }
+        for (int k = max_index - 1; k >= 0; k--) {
+            ps2[k] = ps2[k+1] + v[k];
+        }
+        int max1 = max_element(ps1.begin(), ps1.end()) - ps1.begin();
+        int max2 = max_element(ps2.begin(), ps2.end()) - ps2.begin();
+        
+        
+        cout << v[max_index] + ps1[max1] + ps2[max2] << "\n";
+            
+    }
+
+    return 0;
+}
